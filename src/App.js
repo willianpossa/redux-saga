@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import GlobalStyle from './Styles/global';
 
@@ -7,13 +8,17 @@ import Routes from './Routes';
 
 import Header from './Components/Header';
 
+import Store from './Store/';
+
 function App() {
     return (
-        <BrowserRouter>
-            <Header />
-            <Routes />
-            <GlobalStyle />
-        </BrowserRouter>
+        <Provider store={ Store }>
+            <BrowserRouter>
+                <Header />
+                <Routes />
+                <GlobalStyle />
+            </BrowserRouter>
+        </Provider>
     );
 }
 
