@@ -1,3 +1,6 @@
+// import { FormatPrice } from '../../../Utils/Format';
+// subtotalFormatted: FormatPrice(price * quantity) 
+
 const initialState = {
     items: []
 };
