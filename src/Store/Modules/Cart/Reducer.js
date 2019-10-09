@@ -1,22 +1,43 @@
-// import { FormatPrice } from '../../../Utils/Format';
-// subtotalFormatted: FormatPrice(price * quantity) 
+import produce from 'immer';
 
-const initialState = {
-    items: []
-};
-
-export default function cart(state = initialState, action) {
+export default function cart(state = [], action) {
     switch(action.type) {
         case 'ADD_TO_CART':
-            const items = state.items.concat([{
-                ...action.product,
-                quantity: 1
-            }]);
+            return produce(state, draft => {
+                const productIndex = draft.findIndex(p => p.id === action.product.id);
 
-            return {
-                ...state,
-                items
+                if(productIndex >= 0) {
+                    draft[productIndex].quantity += 1;
+                } else {
+                    draft.push({
+                        ...action.product,
+                        quantity: 1
+                    });
+                }
+            });
+
+        case 'REMOVE_FROM_CART':
+            return produce(state, draft => {
+                const productIndex = draft.findIndex(p => p.id === action.product_id);
+
+                if(productIndex >= 0) {
+                    draft.splice(productIndex, 1);
+                }
+            });
+
+        case 'UPDATE_QUANTITY_FROM_CART': {
+            if(action.quantity <= 0) {
+                return state;
             }
+
+            return produce(state, draft => {
+                const productIndex = draft.findIndex(p => p.id === action.product_id);
+
+                if(productIndex >= 0) {
+                    draft[productIndex].quantity = parseInt(action.quantity);
+                }
+            });
+        }
 
         default:
             return state;

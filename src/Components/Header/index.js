@@ -9,7 +9,7 @@ import logo from '../../Assets/Images/logo.svg';
 
 const Header = () => {
     const cartSize = useSelector(
-        state => state.cart.items.length
+        state => state.cart.length
     );
     
     return (
