@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import Background from '../Assets/Images/background.svg';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap');

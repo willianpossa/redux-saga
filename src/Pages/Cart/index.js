@@ -27,11 +27,11 @@ const Cart = () => {
     }
 
     function incrementQuantity(product) {
-        dispatch(CartActions.updateQuantity(product.id, product.quantity + 1));
+        dispatch(CartActions.updateQuantityRequest(product.id, product.quantity + 1));
     }
 
     function decrementQuantity(product) {
-        dispatch(CartActions.updateQuantity(product.id, product.quantity - 1));
+        dispatch(CartActions.updateQuantityRequest(product.id, product.quantity - 1));
     }
 
     return (

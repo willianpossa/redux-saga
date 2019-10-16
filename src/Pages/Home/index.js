@@ -21,8 +21,8 @@ const Home = () => {
     );
     const dispatch = useDispatch();
 
-    function handleAddProduct(product) {
-        dispatch(CartActions.addToCart(product));
+    function handleAddProduct(product_id) {
+        dispatch(CartActions.addToCartRequest(product_id));
     }
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const Home = () => {
                     <h4>{ product.title }</h4>
                     <span>{ product.priceFormatted }</span>
                     <button 
-                        onClick={ () => handleAddProduct(product) }
+                        onClick={ () => handleAddProduct(product.id) }
                         type="button"
                     >
                         <div>
